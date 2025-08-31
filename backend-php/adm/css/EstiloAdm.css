@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+/*Link da Font*/
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap');
+
+:root {
+    --Branco: rgb(255, 255, 255);
+    --Cinza: #303030c4;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    max-width: 800px;
+    min-width: 320px;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+}
+
+h1{
+    font-family: "Sansita Swashed", system-ui;
+}
+
+main{
+    background-color: var(--Cinza);
+    color: var(--Branco);
+    max-width: 800px;
+    min-width: 320px;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 10px;
+    font-family: "Sansita Swashed", system-ui;
+}
+
+h2{
+    padding: 10px;
+}
+
+
+.btn-add {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--Branco);
+    color: var(--Cinza);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+
+.btn-add:hover {
+    background-color: var(--Cinza);
+    color: var(--Branco);
+    transform: scale(1.1);
+}
+
+/* Estilo do modal */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Caixa de conteúdo do modal */
+.modal-content {
+    background-color: var(--Branco);
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    color: var(--Cinza);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão fechar (X) */
+.close {
+    color: var(--Cinza);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: red;
+}
+
+/* Inputs do formulário */
+form input, form textarea {
+    width: 95%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Botão salvar */
+.btn-salvar {
+    background-color: var(--Cinza);
+    color: var(--Branco);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-salvar:hover {
+    background-color: #505050;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 480px) {
+    .modal-content {
+        margin: 20% auto; /* mais centralizado em celulares */
+        padding: 15px;
+    }
+
+    .close {
+        font-size: 24px;
+    }
+
+    form input, form textarea {
+        font-size: 0.9rem;
+    }
+
+    .btn-salvar {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+}
