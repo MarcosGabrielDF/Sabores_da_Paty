@@ -1,0 +1,78 @@
+1° = docker-compose build
+
+Constrói as imagens Docker a partir dos Dockerfiles (PHP, Python, MySQL).
+
+2° = docker-compose up -d
+
+Inicia os containers em background (PHP, Python, banco MySQL).
+
+3° = docker ps
+
+Verifica se os containers estão rodando e em quais portas.
+
+4° = Para parar os containers
+
+docker-compose down
+
+5° = Para reiniciar containers (por exemplo após alterações)
+
+docker-compose restart
+
+
+
+================================================================
+
+Comandos Básicos para Acessar e Consultar Tabelas no MySQL
+
+===========================================================
+
+1. Acessar o MySQL: Entre na pasta do com (cd docker).
+-------------------
+docker exec -it bater-ponto-php-app-1 bash
+mysql -h db -u admin -p
+
+(Substitua "bater-ponto-php-app-1" pelo nome do serviço MySQL no docker-compose.yml e "admin" pelo seu usuário)
+
+2. Mostrar todos os bancos de dados:
+------------------------------------
+SHOW DATABASES;
+
+3. Selecionar um banco de dados:
+--------------------------------
+USE nome_do_banco;
+
+4. Listar todas as tabelas dentro do banco:
+-------------------------------------------
+SHOW TABLES;
+
+5. Ver estrutura (colunas e tipos) de uma tabela:
+-------------------------------------------------
+DESCRIBE nome_da_tabela;
+-- ou --
+SHOW COLUMNS FROM nome_da_tabela;
+
+6. Ver todos os dados de uma tabela:
+------------------------------------
+SELECT * FROM nome_da_tabela;
+
+7. Ver os primeiros registros de uma tabela:
+--------------------------------------------
+SELECT * FROM nome_da_tabela LIMIT 5;
+
+8. Filtrar dados com condição:
+------------------------------
+SELECT * FROM nome_da_tabela WHERE coluna = 'valor';
+
+Exemplo:
+SELECT * FROM usuarios WHERE username = 'Batman';
+
+9. Ver apenas algumas colunas:
+------------------------------
+SELECT coluna1, coluna2 FROM nome_da_tabela;
+
+Exemplo:
+SELECT username, senha FROM usuarios;
+
+10. Contar a quantidade de registros:
+-------------------------------------
+SELECT COUNT(*) FROM nome_da_tabela;
