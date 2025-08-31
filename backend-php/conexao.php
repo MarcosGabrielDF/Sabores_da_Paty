@@ -3,7 +3,7 @@
 $host = getenv('DB_HOST') ?: 'db';          // serviço do banco no docker-compose
 $user = getenv('DB_USER') ?: 'admin';
 $pass = getenv('DB_PASSWORD') ?: 'root';
-$dbname = getenv('DB_NAME') ?: 'BaterPonto';
+$dbname = getenv('DB_NAME') ?: 'produtos';
 $charset = 'utf8mb4';
 
 // Monta o DSN para PDO

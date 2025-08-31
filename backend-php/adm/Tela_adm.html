@@ -5,6 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administração Sabores da Paty</title>
     <link rel="stylesheet" href="css/EstiloAdm.css">
+    <style>
+        /* ===== MENSAGENS ===== */
+        .message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .mensagem-sucesso {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            box-shadow: 0px 2px 6px rgba(0, 128, 0, 0.1);
+        }
+
+        .mensagem-erro {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            box-shadow: 0px 2px 6px rgba(255, 0, 0, 0.1);
+        }
+
+        .mensagem-alerta {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            box-shadow: 0px 2px 6px rgba(255, 193, 7, 0.1);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -41,69 +74,72 @@
         </div>
     </div>
 
-
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const btnAdd = document.querySelector(".btn-add");
-        const modal = document.querySelector(".modal");
-        const closeBtn = modal.querySelector(".close");
-        const form = document.getElementById("formProduto");
-        const mensagem = document.getElementById("mensagem");
+document.addEventListener("DOMContentLoaded", () => {
+    const btnAdd = document.querySelector(".btn-add");
+    const modal = document.querySelector(".modal");
+    const closeBtn = modal.querySelector(".close");
+    const form = document.getElementById("formProduto");
+    const mensagem = document.getElementById("mensagem");
 
-        // Abrir modal
-        btnAdd.addEventListener("click", () => {
-            modal.style.display = "block";
-            mensagem.style.display = "none";
-            form.reset();
-        });
+    // Abrir modal
+    btnAdd.addEventListener("click", () => {
+        modal.style.display = "block";
+        mensagem.style.display = "none";
+        form.reset();
+    });
 
-        // Fechar modal
-        closeBtn.addEventListener("click", () => {
-            modal.style.display = "none";
-        });
+    // Fechar modal
+    closeBtn.addEventListener("click", () => modal.style.display = "none");
 
-        window.addEventListener("click", (event) => {
-            if (event.target === modal) modal.style.display = "none";
-        });
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) modal.style.display = "none";
+    });
 
-        window.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") modal.style.display = "none";
-        });
+    window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") modal.style.display = "none";
+    });
 
-        // AJAX
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
+    // Função para mostrar mensagem com efeito de desaparecimento
+    function exibirMensagem(tipo, texto) {
+        mensagem.style.display = "block";
+        mensagem.className = "message"; // reset
+        mensagem.classList.add(tipo);    // adiciona o tipo (sucesso, erro, alerta)
+        mensagem.textContent = texto;
 
-            fetch(form.action, {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                mensagem.style.display = "block";
-                mensagem.className = ""; // limpa classes
-                if(data.status === "sucesso") {
-                    mensagem.classList.add("mensagem-sucesso");
-                    mensagem.textContent = data.mensagem;
-                    form.reset();
-                } else if(data.status === "erro") {
-                    mensagem.classList.add("mensagem-erro");
-                    mensagem.textContent = data.mensagem;
-                } else if(data.status === "alerta") {
-                    mensagem.classList.add("mensagem-alerta");
-                    mensagem.textContent = data.mensagem;
-                }
-            })
-            .catch(error => {
-                mensagem.style.display = "block";
-                mensagem.className = "mensagem-erro";
-                mensagem.textContent = "❌ Erro ao enviar formulário.";
-                console.error("Erro AJAX:", error);
-            });
+        // Desaparecer após 5 segundos
+        setTimeout(() => {
+            mensagem.style.opacity = "0";
+            setTimeout(() => { mensagem.style.display = "none"; mensagem.style.opacity = "1"; }, 300);
+        }, 5000);
+    }
+
+    // AJAX
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.status === "sucesso") {
+                exibirMensagem("mensagem-sucesso", data.mensagem);
+                form.reset();
+            } else if(data.status === "erro") {
+                exibirMensagem("mensagem-erro", data.mensagem);
+            } else if(data.status === "alerta") {
+                exibirMensagem("mensagem-alerta", data.mensagem);
+            }
+        })
+        .catch(error => {
+            exibirMensagem("mensagem-erro", "❌ Erro ao enviar formulário.");
+            console.error("Erro AJAX:", error);
         });
     });
+});
 </script>
-
 </body>
 </html>
