@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/*Link da font*/
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap');
+
+/*Variáveis de cores*/
+:root {
+  --RosaClaro: #FFE7E4;  /* Rosa claro */
+  --Branco: #FFFFFF; /* Branco */
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: var(--RosaClaro);
+    font-family: "Sansita Swashed", system-ui;
+}
+
+header{
+    margin: 10px;
+    text-align: center;
+}
+
+#Carrinho_Compra{
+    width: 90%;
+    margin: auto;
+    padding: 5px;
+    text-align: right;
+}
+
+main{
+    max-width: 800px;
+    min-width: 360px;
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+}
