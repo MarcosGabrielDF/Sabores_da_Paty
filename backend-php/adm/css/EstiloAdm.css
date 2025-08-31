@@ -1,51 +1,51 @@
 @charset "UTF-8";
 
-/*Link da Font*/
+/* Link da Font */
 @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap');
 
 :root {
-    --Branco: rgb(255, 255, 255);
+    --Branco: #ffffff;
     --Cinza: #303030c4;
 }
 
-*{
-    margin: 0px;
-    padding: 0px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8f8f8;
 }
 
-header{
+header {
     max-width: 800px;
     min-width: 320px;
-    margin: auto;
-    margin-top: 10px;
+    margin: 10px auto;
     text-align: center;
 }
 
-h1{
+h1 {
     font-family: "Sansita Swashed", system-ui;
 }
 
-main{
+main {
     background-color: var(--Cinza);
     color: var(--Branco);
     max-width: 800px;
     min-width: 320px;
-    margin: auto;
-    margin-top: 10px;
+    margin: 10px auto;
     text-align: center;
     border-radius: 10px;
     font-family: "Sansita Swashed", system-ui;
 }
 
-h2{
+h2 {
     padding: 10px;
 }
 
-
+/* ===== BOTÃO "+" ===== */
 .btn-add {
     position: fixed;
     bottom: 20px;
@@ -69,35 +69,39 @@ h2{
     transform: scale(1.1);
 }
 
-/* Estilo do modal */
+/* ===== MODAL ===== */
+/* Modal geral */
 .modal {
-    display: none; /* Escondido por padrão */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow-y: auto; /* permite rolagem vertical */
     background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* Caixa de conteúdo do modal */
 .modal-content {
     background-color: var(--Branco);
-    margin: 10% auto;
+    margin: 50px auto; /* espaço superior e inferior */
     padding: 20px;
     border-radius: 10px;
     width: 90%;
     max-width: 500px;
     color: var(--Cinza);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
+
 
 /* Botão fechar (X) */
 .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
     color: var(--Cinza);
-    float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -107,24 +111,46 @@ h2{
     color: red;
 }
 
-/* Inputs do formulário */
-form input, form textarea {
-    width: 95%;
-    padding: 8px;
-    margin: 5px 0;
+/* ===== FORMULÁRIO ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+form label {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+form input, 
+form textarea {
+    width: 100%;
+    padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: var(--Cinza);
+    box-shadow: 0 0 5px rgba(48, 48, 48, 0.4);
 }
 
 /* Botão salvar */
 .btn-salvar {
     background-color: var(--Cinza);
     color: var(--Branco);
-    padding: 10px 20px;
+    padding: 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 1rem;
 }
 
 .btn-salvar:hover {
@@ -132,14 +158,13 @@ form input, form textarea {
 }
 
 /* ===== RESPONSIVIDADE ===== */
-@media (max-width: 480px) {
-    .modal-content {
-        margin: 20% auto; /* mais centralizado em celulares */
-        padding: 15px;
+@media (max-width: 600px) {
+      .modal-content {
+        margin: 20px auto; /* menos margem em telas baixas */
     }
 
-    .close {
-        font-size: 24px;
+    form label {
+        font-size: 0.85rem;
     }
 
     form input, form textarea {
@@ -147,7 +172,7 @@ form input, form textarea {
     }
 
     .btn-salvar {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         padding: 10px;
     }
 }
