@@ -5,8 +5,8 @@
 
 /*Variáveis de cores*/
 :root {
-  --RosaClaro: #FFE7E4;  /* Rosa claro */
-  --Branco: #FFFFFF; /* Branco */
+  --RosaClaro: #c88772;  /* Rosa claro */
+  --Vermelho: #650014; /* vermelho */
 }
 
 *{
@@ -16,6 +16,7 @@
 
 body{
     background-color: var(--RosaClaro);
+    color: var(--Vermelho);
     font-family: "Sansita Swashed", system-ui;
 }
 
