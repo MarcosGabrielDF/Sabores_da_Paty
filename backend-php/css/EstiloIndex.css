@@ -42,12 +42,17 @@ img{
     max-width: 100%;
 }
 
+h2{
+    margin-bottom: 20px;
+}
+
 main{
     max-width: 800px;
     min-width: 360px;
     text-align: center;
     margin: auto;
     margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 /*===========================*/
