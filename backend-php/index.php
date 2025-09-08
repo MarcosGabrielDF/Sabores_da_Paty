@@ -27,7 +27,7 @@
 
   <hr>
 
-  <a href="adm/Tela_adm.html">Menu</a>
+  <a href="adm/Tela_adm.html">ADM</a>
 
   <main>
     <h2>Menu</h2>

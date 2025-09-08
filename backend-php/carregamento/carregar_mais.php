@@ -1,13 +1,19 @@
 <?php
-require 'conexao.php';
+require '../conexao.php';
+header('Content-Type: application/json; charset=utf-8');
 
-$offset = isset($_GET['offset']) ? (int) $_GET['offset'] : 0;
-$limit = 12;
+$offset = isset($_GET['offset']) ? max(0, (int)$_GET['offset']) : 0;
+$limit  = 12;
 
-$stmt = $pdo->prepare('SELECT id, nome, preco, foto FROM produtos ORDER BY criado_em DESC LIMIT ?, ?');
-$stmt->bindValue(1, $offset, PDO::PARAM_INT);
-$stmt->bindValue(2, $limit, PDO::PARAM_INT);
+$sql = "SELECT id, foto, nome, preco
+        FROM produtos 
+        ORDER BY criado_em DESC 
+        LIMIT $offset, $limit";
+
+// Use um prepared statement para maior segurança
+$stmt = $pdo->prepare($sql);
 $stmt->execute();
-$produtos = $stmt->fetchAll();
+$produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($produtos);
+echo json_encode($produtos, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+?>
