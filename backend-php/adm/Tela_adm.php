@@ -1,3 +1,8 @@
+<?php
+  require '../conexao.php';
+  require '../carregamento/produtos_iniciais.php'; // isso já define $produtos
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -46,6 +51,16 @@
     </header>
     <main>
         <h2>Meus Produtos</h2>
+        <div class="produtos-container">
+          <?php foreach($produtos as $produto): ?>
+              <div class="produto-card" data-id="<?= $produto['id'] ?>">
+                  <img src="../adm/<?= htmlspecialchars($produto['foto']) ?>" loading="lazy" alt="<?= htmlspecialchars($produto['nome']) ?>">
+                  <h2><?= htmlspecialchars($produto['nome']) ?></h2>
+                  <strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong>
+              </div>
+          <?php endforeach; ?>
+      </div>
+
     </main>
     
     <!-- Botão "+" -->
@@ -74,6 +89,10 @@
             <div id="mensagem" style="margin-top:10px;"></div> <!-- Mensagens AJAX -->
         </div>
     </div>
+
+
+
+<script src="../carregamento/carregar_na_tela.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {

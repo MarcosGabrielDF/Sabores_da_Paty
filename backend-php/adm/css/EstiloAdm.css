@@ -158,6 +158,53 @@ form textarea:focus {
     background-color: #505050;
 }
 
+/*==========================*/
+/* Container dos produtos */
+.produtos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Card de cada produto */
+.produto-card {
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Imagem do produto */
+.produto-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Nome do produto */
+.produto-card h2 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Preço */
+.produto-card strong {
+    font-size: 14px;
+    color: #e74c3c; /* vermelho suave para preço */
+}
+
 /* ===== RESPONSIVIDADE ===== */
 @media (max-width: 600px) {
       .modal-content {

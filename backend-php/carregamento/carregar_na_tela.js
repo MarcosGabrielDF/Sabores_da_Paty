@@ -7,7 +7,7 @@ window.addEventListener('scroll', () => {
         if (!carregando && !acabou) {
             carregando = true;
 
-            fetch(`carregamento/carregar_mais.php?offset=${offset}`)
+            fetch(`../carregamento/carregar_mais.php?offset=${offset}`)
                 .then(res => {
                     if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     return res.json();
@@ -25,7 +25,7 @@ window.addEventListener('scroll', () => {
                     data.forEach(produto => {
                         container.insertAdjacentHTML("beforeend", `
                             <div class="produto-card" data-id="${produto.id}">
-                                <img src="adm/${produto.foto}" loading="lazy" alt="${produto.nome}">
+                                <img src="../adm/${produto.foto}" loading="lazy" alt="${produto.nome}">
                                 <h2>${produto.nome}</h2>
                                 <strong>R$ ${parseFloat(produto.preco).toFixed(2).replace('.', ',')}</strong>
                             </div>

@@ -1,4 +1,5 @@
 <?php
+  require 'conexao.php';
   require 'carregamento/produtos_iniciais.php'; // isso já define $produtos
 ?>
 
@@ -27,7 +28,7 @@
 
   <hr>
 
-  <a href="adm/Tela_adm.html">ADM</a>
+  <a href="adm/Tela_adm.php">ADM</a>
 
   <main>
     <h2>Menu</h2>
