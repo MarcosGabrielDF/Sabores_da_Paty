@@ -1,6 +1,9 @@
-let offset = 12; // já carregamos os primeiros 12 produtos
-let carregando = false; // evita múltiplas requisições ao mesmo tempo
-let acabou = false;     // indica que não há mais produtos
+let offset = 12;
+let carregando = false;
+let acabou = false;
+
+// pega só o nome do arquivo atual
+let PaginaAtual = window.location.pathname.split("/").pop();
 
 window.addEventListener('scroll', () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
@@ -22,15 +25,35 @@ window.addEventListener('scroll', () => {
                         return;
                     }
 
-                    data.forEach(produto => {
-                        container.insertAdjacentHTML("beforeend", `
-                            <div class="produto-card" data-id="${produto.id}">
-                                <img src="../adm/${produto.foto}" loading="lazy" alt="${produto.nome}">
-                                <h2>${produto.nome}</h2>
-                                <strong>R$ ${parseFloat(produto.preco).toFixed(2).replace('.', ',')}</strong>
-                            </div>
-                        `);
-                    });
+                    if (PaginaAtual === "index.php") {
+                        // tela do cliente
+                        data.forEach(produto => {
+                            container.insertAdjacentHTML("beforeend", `
+                                <div class="produto-card" data-id="${produto.id}">
+                                    <img src="../adm/${produto.foto}" loading="lazy" alt="${produto.nome}">
+                                    <h2>${produto.nome}</h2>
+                                    <strong>R$ ${parseFloat(produto.preco).toFixed(2).replace('.', ',')}</strong>
+                                </div>
+                            `);
+                        });
+                    } else if (PaginaAtual === "Tela_adm.php") {
+                        // tela de administração
+                        data.forEach(produto => {
+                            container.insertAdjacentHTML("beforeend", `
+                                <div class="produto-card" data-id="${produto.id}">
+                                    <img src="../adm/${produto.foto}" loading="lazy" alt="${produto.nome}">
+                                    <h2>${produto.nome}</h2>
+                                    <strong>R$ ${parseFloat(produto.preco).toFixed(2).replace('.', ',')}</strong> 
+                                    <div class="delete">
+                                        <form method="POST" action="delete.php" onsubmit="return confirm('Deseja realmente excluir este produto?');">
+                                            <input type="hidden" name="delete_id" value="${produto.id}">
+                                            <button type="submit" name="delete">Excluir</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            `);
+                        });
+                    }
 
                     offset += data.length;
                     carregando = false;

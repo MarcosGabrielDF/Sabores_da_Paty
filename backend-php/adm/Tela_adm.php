@@ -52,14 +52,23 @@
     <main>
         <h2>Meus Produtos</h2>
         <div class="produtos-container">
-          <?php foreach($produtos as $produto): ?>
-              <div class="produto-card" data-id="<?= $produto['id'] ?>">
-                  <img src="../adm/<?= htmlspecialchars($produto['foto']) ?>" loading="lazy" alt="<?= htmlspecialchars($produto['nome']) ?>">
-                  <h2><?= htmlspecialchars($produto['nome']) ?></h2>
-                  <strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong>
-              </div>
-          <?php endforeach; ?>
-      </div>
+            <?php foreach($produtos as $produto): ?>
+                <div class="produto-card" data-id="<?= $produto['id'] ?>">
+                    <img src="../adm/<?= htmlspecialchars($produto['foto']) ?>" loading="lazy" alt="<?= htmlspecialchars($produto['nome']) ?>">
+                    <h2><?= htmlspecialchars($produto['nome']) ?></h2>
+                    <strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong>
+
+                    <div class="delete">
+                        <form method="POST" action="delete.php">
+                            <input type="hidden" name="delete_id" value="<?= $produto['id'] ?>">
+                            <button type="submit" name="delete" onclick="return confirm('Deseja realmente excluir este produto?');">
+                                Excluir
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
 
     </main>
     
