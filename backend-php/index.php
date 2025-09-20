@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=shopping_cart" />
 </head>
 <body>
-
+  
   <header>
     <section id="Carrinho_Compra"> 
       <a href="#">
@@ -32,18 +32,30 @@
 
   <main>
     <h2>Menu</h2>
-      <div class="produtos-container">
-          <?php foreach($produtos as $produto): ?>
-              <div class="produto-card" data-id="<?= $produto['id'] ?>">
-                  <img src="adm/<?= htmlspecialchars($produto['foto']) ?>" loading="lazy" alt="<?= htmlspecialchars($produto['nome']) ?>">
-                  <h2><?= htmlspecialchars($produto['nome']) ?></h2>
-                  <strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong>
-              </div>
-          <?php endforeach; ?>
-      </div>
+     <div class="produtos-container">
+        <?php foreach($produtos as $produto): ?>
+            <div class="produto-card" data-id="<?= $produto['id'] ?>">
+                <img src="adm/<?= htmlspecialchars($produto['foto']) ?>" loading="lazy" alt="<?= htmlspecialchars($produto['nome']) ?>">
+                <h2><?= htmlspecialchars($produto['nome']) ?></h2>
+                <strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong>
+            </div>
+        <?php endforeach; ?>
+    </div>
 
   </main>
 
 <script src="carregamento/carregar_na_tela.js"></script>
+
+<script>
+//ID para o link.
+document.querySelectorAll('.produto-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const id = card.getAttribute('data-id');
+        // leva sempre para a mesma página, mas passando o ID
+        window.location.href = "Telas_Segundarias/visualizacao/Tela_visualizacao.php?id=" + id;
+    });
+});
+</script>
+
 </body>
 </html>
