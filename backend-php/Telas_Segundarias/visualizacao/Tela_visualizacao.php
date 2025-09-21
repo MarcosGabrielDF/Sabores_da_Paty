@@ -12,13 +12,16 @@ require 'Pegar_dados.php';
     <link rel="stylesheet" href="/Telas_Segundarias/visualizacao/css/Estilo_visualizacao.css">
     <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=shopping_cart" />
 </head>
 <body>
     <!-- Header fixo -->
     <header>
         <a href="../../../index.php" class="voltar">⟵</a>
-        <div class="logo"><img src="../../../img/bolo.png" alt="Logo, é um bolo e está escrito Sabores da Paty"></div>
-        <a href="../Carrinho/carrinho.php" class="carrinho">🛒</a>
+        <div class="logo"><img src="../../../img/BoloPng1.png" alt="Logo, é um bolo e está escrito Sabores da Paty"></div> 
+        <a href="#">
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </a>
     </header>
 
     <!-- Corpo -->

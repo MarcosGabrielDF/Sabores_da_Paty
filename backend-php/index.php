@@ -22,7 +22,7 @@
       </a>
     </section>
     <div id="Logo">
-      <img src="img/bolo.png" alt="Logo: é um bolo cortado, embaixo está escrito Sabores da Paty.">
+      <img src="img/BoloPng1.png" alt="Logo: é um bolo cortado, embaixo está escrito Sabores da Paty.">
     </div>
   </header>
 
