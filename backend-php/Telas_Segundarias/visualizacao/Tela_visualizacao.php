@@ -9,16 +9,16 @@ require 'Pegar_dados.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descrição do Produto</title>
-    <link rel="stylesheet" href="css/Estilo_visualizacao.css">
+    <link rel="stylesheet" href="/Telas_Segundarias/visualizacao/css/Estilo_visualizacao.css">
     <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header fixo -->
     <header>
-        <a href="javascript:history.back()" class="voltar">⟵</a>
-        <div class="logo"><img src="../../img/bolo.png" alt="Logo, é um bolo e está escrito Sabores da Paty"></div>
-        <a href="../../../carrinho.php" class="carrinho">🛒</a>
+        <a href="../../../index.php" class="voltar">⟵</a>
+        <div class="logo"><img src="../../../img/bolo.png" alt="Logo, é um bolo e está escrito Sabores da Paty"></div>
+        <a href="../Carrinho/carrinho.php" class="carrinho">🛒</a>
     </header>
 
     <!-- Corpo -->

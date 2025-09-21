@@ -37,10 +37,10 @@ window.addEventListener('scroll', () => {
                             `);
                         });
                      container.querySelectorAll('.produto-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const id = card.getAttribute('data-id');
-            window.location.href = `../Telas_Segundarias/visualizacao/Tela_visualizacao.php/produto.php?id=${id}`;
-        });
+                        card.addEventListener('click', () => {
+                            const id = card.getAttribute('data-id');
+                            window.location.href = `../Telas_Segundarias/visualizacao/Tela_visualizacao.php/produto.php?id=${id}`;
+                        });
     });
                     } else if (PaginaAtual === "Tela_adm.php") {
                         // tela de administração
