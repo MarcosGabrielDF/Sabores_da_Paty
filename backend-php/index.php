@@ -17,7 +17,7 @@
   
   <header>
     <section id="Carrinho_Compra"> 
-      <a href="#">
+      <a href="Telas_Segundarias/Carrinho/Tela_carrinho.php">
         <span class="material-symbols-outlined">shopping_cart</span>
       </a>
     </section>

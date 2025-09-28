@@ -25,7 +25,7 @@ window.addEventListener('scroll', () => {
                         return;
                     }
 
-                    if (PaginaAtual === "index.php") {
+                    if (PaginaAtual === "index.php" || PaginaAtual === "") {
                         // tela do cliente
                         data.forEach(produto => {
                             container.insertAdjacentHTML("beforeend", `
