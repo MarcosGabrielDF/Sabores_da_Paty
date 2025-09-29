@@ -1,23 +1,26 @@
-// Produtos de exemplo
-const produtos = [
-    { nome: "Bolo de Chocolate", preco: 30.00, quantidade: 2 },
-    { nome: "Brigadeiro", preco: 2.50, quantidade: 10 },
-    { nome: "Torta de Morango", preco: 45.00, quantidade: 1 }
-];
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.querySelector(".btn-carrinho");
+  if (!btn) return;
 
-const tbody = document.querySelector("#carrinho tbody");
+  btn.addEventListener("click", () => {
+    const id = btn.getAttribute("data-id");
+    const nome = btn.getAttribute("data-nome");
+    let precoStr = btn.getAttribute("data-preco") || "0";
+    precoStr = precoStr.replace(",", "."); // aceita "45,00" também
+    const preco = parseFloat(precoStr) || 0;
+    let quantidade = parseInt(document.getElementById("quantidade").value, 10) || 1;
+    if (quantidade < 1) quantidade = 1;
 
-// Mostra os produtos na tabela
-produtos.forEach(p => {
-    let subtotal = p.preco * p.quantidade;
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-    let row = `
-    <tr>
-        <td>${p.nome}</td>
-        <td>R$ ${p.preco.toFixed(2)}</td>
-        <td>${p.quantidade}</td>
-        <td>R$ ${subtotal.toFixed(2)}</td>
-    </tr>
-    `;
-    tbody.innerHTML += row;
+    const idx = carrinho.findIndex(p => String(p.id) === String(id));
+    if (idx > -1) {
+      carrinho[idx].quantidade = Number(carrinho[idx].quantidade) + quantidade;
+    } else {
+      carrinho.push({ id, nome, preco, quantidade });
+    }
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    alert("✅ Produto adicionado ao carrinho!");
+  });
 });

@@ -35,7 +35,7 @@ require 'Pegar_dados.php';
                 <div class="compra">
                     <label for="quantidade">Quantidade:</label>
                     <input type="number" id="quantidade" name="quantidade" value="1" min="1">
-                    <button class="btn-carrinho">Adicionar ao Carrinho</button>
+                    <button class="btn-carrinho" data-id="<?= $produto['id'] ?>" data-nome="<?= $produto['nome'] ?>" data-preco="<?= $produto['preco'] ?>">Adicionar ao Carrinho</button>
                 </div>
             </div>
 
@@ -48,5 +48,6 @@ require 'Pegar_dados.php';
             </div>
         </div>
     </main>
+<script src="/Telas_Segundarias/Carrinho/carrinho.js"></script>
 </body>
 </html>
