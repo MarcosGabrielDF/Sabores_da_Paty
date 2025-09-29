@@ -1,12 +1,11 @@
 @charset "UTF-8";
 
-/*Link da font*/
-@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap');
 
 /*Variáveis de cores*/
 :root {
   --RosaClaro: #c8877273;  /* Rosa claro */
   --Vermelho: #650014ea; /* vermelho */
+  --Branco: #ffffffab;
 }
 
 *{
@@ -17,7 +16,7 @@
 body{
     background-color: var(--RosaClaro);
     color: var(--Vermelho);
-    font-family: "Sansita Swashed", system-ui;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 header{
@@ -68,7 +67,7 @@ main{
 /* Card de cada produto */
 .produto-card {
     width: 200px;
-    background-color: #fff;
+    background-color: var(--Branco);
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;

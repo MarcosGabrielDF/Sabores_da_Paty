@@ -19,7 +19,7 @@ require 'Pegar_dados.php';
     <header>
         <a href="../../../index.php" class="voltar">⟵</a>
         <div class="logo"><img src="../../../img/BoloPng1.png" alt="Logo, é um bolo e está escrito Sabores da Paty"></div> 
-        <a href="#">
+        <a href="/Telas_Segundarias/Carrinho/Tela_carrinho.php">
             <span class="material-symbols-outlined">shopping_cart</span>
         </a>
     </header>

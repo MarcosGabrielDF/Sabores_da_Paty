@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Carrinho</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/carrinho.css">
   <style>
     table{width:100%;border-collapse:collapse;margin:20px 0}
     th,td{border:1px solid #ddd;padding:8px;text-align:center}
@@ -104,7 +105,7 @@
         localStorage.setItem("carrinho", JSON.stringify(carrinho));
         renderCart();
     });
-    
+
     function updateTotal() {
       const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
       const total = carrinho.reduce((s, it) => s + (Number(it.preco) || 0) * (Number(it.quantidade) || 0), 0);
