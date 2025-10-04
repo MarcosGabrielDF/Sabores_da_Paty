@@ -1,103 +1,139 @@
 @charset "UTF-8";
 
-
-/*Variáveis de cores*/
+/*================ Variáveis de cores ================*/
 :root {
-  --RosaClaro: #c8877273;  /* Rosa claro */
-  --Vermelho: #650014ea; /* vermelho */
-  --Branco: #ffffffab;
+  --cor1: #cacaca;     /* cor1 - tom claro */
+  --cor2: #650014ea;   /* cor2 - tom escuro / vermelho */
+  --cor3: #ffffffab;   /* cor3 - branco translúcido */
 }
 
-*{
-    margin: 0px;
-    padding: 0px;
+/*================ Reset global ================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: var(--RosaClaro);
-    color: var(--Vermelho);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+/*================ Corpo e estrutura ================*/
+body {
+  background-color: var(--cor1);
+  color: var(--cor2);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  overflow-x: hidden;
 }
 
-header{
-    margin: 10px;
-    text-align: center;
+/*================ Banner com efeito Parallax ================*/
+#Banner {
+  width: 100%;
+  height: 60vh; /* altura do banner (ajuste como quiser) */
+  background-image: url("/img/Saboresdapaty.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; /* 🎯 aqui está o parallax */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-
-#Carrinho_Compra{
-    width: 90%;
-    margin: auto;
-    padding: 5px;
-    text-align: right;
+/* Efeito de leve sombra escura sobre o banner */
+#Banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
 }
 
-#Logo{
-    max-width: 300px;
-    margin: auto;
+/* Caso queira adicionar texto dentro do banner */
+#Banner h1 {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 3rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-img{
-    max-width: 100%;
+/* Fallback para celulares (sem background fixed) */
+@media (max-width: 768px) {
+  #Banner {
+    background-attachment: scroll;
+    height: 40vh;
+  }
+
+  #Banner h1 {
+    color: #33333300;
+  }
 }
 
-h2{
-    margin-bottom: 20px;
+/*================ Cabeçalho e logo antigos ================*/
+header {
+  text-align: center;
 }
 
-main{
-    max-width: 800px;
-    min-width: 360px;
-    text-align: center;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 20px;
+#Carrinho_Compra {
+  width: 90%;
+  margin: auto;
+  padding: 5px;
+  text-align: right;
 }
 
-/*===========================*/
+/*================ Layout principal ================*/
+main {
+  max-width: 800px;
+  min-width: 360px;
+  text-align: center;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
 
-/* Container dos produtos */
+h2 {
+  margin-bottom: 20px;
+}
+
+/*================ Produtos ================*/
 .produtos-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
-/* Card de cada produto */
 .produto-card {
-    width: 200px;
-    background-color: var(--Branco);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
+  width: 200px;
+  background-color: var(--cor3);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
 }
 
 .produto-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 /* Imagem do produto */
 .produto-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 /* Nome do produto */
 .produto-card h2 {
-    font-size: 16px;
-    margin-bottom: 5px;
-    color: #333;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
 }
 
 /* Preço */
 .produto-card strong {
-    font-size: 14px;
-    color: #e74c3c; /* vermelho suave para preço */
+  font-size: 14px;
+  color: #e74c3c; /* vermelho suave para preço */
 }

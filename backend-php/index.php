@@ -10,52 +10,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sabores da Paty</title>
+
+  <!-- CSS principal -->
   <link rel="stylesheet" href="css/EstiloIndex.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=shopping_cart" />
+
+  <!-- Ícone do carrinho -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
+
 <body>
-  
-  <header>
-    <section id="Carrinho_Compra"> 
-      <a href="Telas_Segundarias/Carrinho/Tela_carrinho.php">
-        <span class="material-symbols-outlined">shopping_cart</span>
-      </a>
-    </section>
-    <div id="Logo">
-      <img src="img/BoloPng1.png" alt="Logo: é um bolo cortado, embaixo está escrito Sabores da Paty.">
-    </div>
+
+  <!-- Banner com efeito Parallax -->
+  <header id="Banner">
+    <h1>Sabores da Paty</h1>
   </header>
 
-  <hr>
+  <!-- Seção do carrinho -->
+  <section id="Carrinho_Compra"> 
+    <a href="Telas_Segundarias/Carrinho/Tela_carrinho.php">
+      <span class="material-symbols-outlined">shopping_cart</span>
+    </a>
+  </section>
 
-  <a href="adm/Tela_adm.php">ADM</a>
+  <!-- Link para o painel ADM -->
+  <a href="adm/Tela_adm.php" style="display:block; text-align:center; margin:15px 0; color: var(--cor2); font-weight:bold;">
+    ADM
+  </a>
 
+  <!-- Conteúdo principal -->
   <main>
     <h2>Menu</h2>
-     <div class="produtos-container">
-        <?php foreach($produtos as $produto): ?>
-            <div class="produto-card" data-id="<?= $produto['id'] ?>">
-                <img src="adm/<?= htmlspecialchars($produto['foto']) ?>" loading="lazy" alt="<?= htmlspecialchars($produto['nome']) ?>">
-                <h2><?= htmlspecialchars($produto['nome']) ?></h2>
-                <strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong>
-            </div>
-        <?php endforeach; ?>
+    <div class="produtos-container">
+      <?php foreach($produtos as $produto): ?>
+        <div class="produto-card" data-id="<?= $produto['id'] ?>">
+          <img src="adm/<?= htmlspecialchars($produto['foto']) ?>" loading="lazy" alt="<?= htmlspecialchars($produto['nome']) ?>">
+          <h2><?= htmlspecialchars($produto['nome']) ?></h2>
+          <strong>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></strong>
+        </div>
+      <?php endforeach; ?>
     </div>
-
   </main>
 
-<script src="carregamento/carregar_na_tela.js"></script>
-
-<script>
-//ID para o link.
-document.querySelectorAll('.produto-card').forEach(card => {
-    card.addEventListener('click', () => {
+  <!-- Script para redirecionar ao clicar no produto -->
+  <script src="carregamento/carregar_na_tela.js"></script>
+  <script>
+    document.querySelectorAll('.produto-card').forEach(card => {
+      card.addEventListener('click', () => {
         const id = card.getAttribute('data-id');
-        // leva sempre para a mesma página, mas passando o ID
         window.location.href = "Telas_Segundarias/visualizacao/Tela_visualizacao.php?id=" + id;
+      });
     });
-});
-</script>
+  </script>
 
 </body>
 </html>
